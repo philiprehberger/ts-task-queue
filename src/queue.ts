@@ -3,18 +3,21 @@ import { parseDuration } from './duration.js';
 
 const PRIORITY_ORDER: Record<Priority, number> = { high: 0, normal: 1, low: 2 };
 
-let idCounter = 0;
-function generateId(): string {
-  return `job_${Date.now()}_${++idCounter}`;
-}
-
 export function createQueue<T>(options: QueueOptions = {}, events: QueueEvents<T> = {}) {
   const {
     concurrency = 1,
     retries = 0,
     backoffMultiplier = 2,
     initialBackoff = 1000,
+    timeout: queueTimeout,
   } = options;
+
+  const defaultTimeout = queueTimeout ? parseDuration(queueTimeout) : undefined;
+
+  let idCounter = 0;
+  function generateId(): string {
+    return `job_${Date.now()}_${++idCounter}`;
+  }
 
   const pending: Job<T>[] = [];
   const activeJobs = new Set<Job<T>>();
@@ -48,7 +51,22 @@ export function createQueue<T>(options: QueueOptions = {}, events: QueueEvents<T
 
     try {
       job.attempts++;
-      await handler(job);
+
+      const jobTimeout = job.timeout ?? defaultTimeout;
+
+      let result: Promise<void>;
+      if (jobTimeout != null && jobTimeout > 0) {
+        result = Promise.race([
+          handler(job),
+          new Promise<never>((_, reject) => {
+            setTimeout(() => reject(new Error(`Job timed out after ${jobTimeout}ms`)), jobTimeout);
+          }),
+        ]);
+      } else {
+        result = handler(job);
+      }
+
+      await result;
       job.status = 'completed';
       if (job.key) knownKeys.delete(job.key);
       events.onComplete?.(job);
@@ -108,10 +126,19 @@ export function createQueue<T>(options: QueueOptions = {}, events: QueueEvents<T
   function add(data: T, opts?: AddOptions): Job<T> {
     if (opts?.key && knownKeys.has(opts.key)) {
       const existing = pending.find((j) => j.key === opts.key);
-      if (existing) return existing;
+      if (existing) {
+        const newPriority = opts.priority ?? 'normal';
+        if (existing.priority !== newPriority || existing.data !== data) {
+          existing.priority = newPriority;
+          existing.data = data;
+          sortPending();
+        }
+        return existing;
+      }
     }
 
     const delay = opts?.delay ? parseDuration(opts.delay) : 0;
+    const jobTimeout = opts?.timeout ? parseDuration(opts.timeout) : undefined;
     const job: Job<T> = {
       id: generateId(),
       data,
@@ -122,6 +149,7 @@ export function createQueue<T>(options: QueueOptions = {}, events: QueueEvents<T
       createdAt: Date.now(),
       processAt: Date.now() + delay,
       key: opts?.key,
+      timeout: jobTimeout,
     };
 
     if (opts?.key) knownKeys.add(opts.key);

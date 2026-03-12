@@ -6,12 +6,14 @@ export interface QueueOptions {
   retries?: number;
   backoffMultiplier?: number;
   initialBackoff?: number;
+  timeout?: string | number;
 }
 
 export interface AddOptions {
   priority?: Priority;
   delay?: string | number;
   key?: string;
+  timeout?: string | number;
 }
 
 export interface Job<T> {
@@ -25,6 +27,7 @@ export interface Job<T> {
   processAt: number;
   key?: string;
   error?: Error;
+  timeout?: number;
 }
 
 export type JobHandler<T> = (job: Job<T>) => Promise<void>;

@@ -44,11 +44,21 @@ queue.add(data, { delay: '5m' });     // process after 5 minutes
 queue.add(data, { delay: 30000 });    // process after 30 seconds
 ```
 
+### Job Timeout
+
+```ts
+// Queue-level default timeout
+const queue = createQueue<MyData>({ concurrency: 3, timeout: 30000 });
+
+// Per-job timeout override
+queue.add(data, { timeout: 5000 });
+```
+
 ### Deduplication
 
 ```ts
 queue.add(data, { key: 'user:123:welcome' });
-queue.add(data, { key: 'user:123:welcome' }); // skipped — same key
+queue.add(data, { key: 'user:123:welcome' }); // updates priority/data if changed
 ```
 
 ### Events
