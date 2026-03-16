@@ -1,6 +1,6 @@
 # @philiprehberger/task-queue
 
-[![CI](https://github.com/philiprehberger/task-queue/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/task-queue/actions/workflows/ci.yml)
+[![CI](https://github.com/philiprehberger/task-queue/actions/workflows/publish.yml/badge.svg)](https://github.com/philiprehberger/task-queue/actions/workflows/publish.yml)
 [![npm version](https://img.shields.io/npm/v/@philiprehberger/task-queue.svg)](https://www.npmjs.com/package/@philiprehberger/task-queue)
 [![License](https://img.shields.io/github/license/philiprehberger/task-queue)](LICENSE)
 
@@ -115,6 +115,15 @@ const removed = queue.clear(); // removes all pending jobs, returns count remove
 queue.size();     // total pending jobs
 queue.active();   // currently processing
 queue.pending();  // ready to process (not delayed)
+```
+
+
+## Development
+
+```bash
+npm install
+npm run build
+npm test
 ```
 
 ## License

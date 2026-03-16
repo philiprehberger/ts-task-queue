@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.3
+
+- Add Development section to README
+- Fix CI badge to reference publish.yml
+
 ## 0.3.0
 - Fix timeout timer leak — clear `setTimeout` when handler resolves before timeout
 - Add `maxSize` option to limit pending queue length (throws on overflow)
