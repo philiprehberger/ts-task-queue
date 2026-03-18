@@ -4,7 +4,7 @@
 [![npm version](https://img.shields.io/npm/v/@philiprehberger/task-queue.svg)](https://www.npmjs.com/package/@philiprehberger/task-queue)
 [![License](https://img.shields.io/github/license/philiprehberger/task-queue)](LICENSE)
 
-In-process async job queue with concurrency control, priorities, and retries.
+In-process async job queue with concurrency control, priorities, and retries
 
 > **Note:** This is an in-process queue using in-memory storage. For distributed job processing across multiple servers, use a Redis-backed solution like BullMQ.
 
@@ -117,6 +117,28 @@ queue.active();   // currently processing
 queue.pending();  // ready to process (not delayed)
 ```
 
+
+## API
+
+| Export | Type | Description |
+|--------|------|-------------|
+| `createQueue(options?, events?)` | Function | Create a new job queue; returns queue instance |
+| `parseDuration(input)` | Function | Parse a duration string (e.g. `'5m'`) or number to milliseconds |
+
+### Queue Instance Methods
+
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `process(handler)` | `void` | Register the job handler function |
+| `add(data, options?)` | `Job<T>` | Add a job to the queue |
+| `pause()` | `void` | Pause job processing |
+| `resume()` | `void` | Resume job processing |
+| `drain()` | `Promise<void>` | Wait for all active and pending jobs to complete |
+| `size()` | `number` | Total pending jobs |
+| `active()` | `number` | Currently processing jobs |
+| `pending()` | `number` | Ready-to-process jobs (not delayed) |
+| `clear()` | `number` | Remove all pending jobs; returns count removed |
+| `destroy()` | `void` | Stop the queue and clear all state |
 
 ## Development
 
