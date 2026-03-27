@@ -3,6 +3,7 @@
 [![CI](https://github.com/philiprehberger/ts-task-queue/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/ts-task-queue/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/@philiprehberger/task-queue.svg)](https://www.npmjs.com/package/@philiprehberger/task-queue)
 [![License](https://img.shields.io/github/license/philiprehberger/ts-task-queue)](LICENSE)
+[![Sponsor](https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ec6cb9)](https://github.com/sponsors/philiprehberger)
 
 In-process async job queue with concurrency control, priorities, and retries
 
