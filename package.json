@@ -1,6 +1,6 @@
 {
   "name": "@philiprehberger/task-queue",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "In-process async job queue with concurrency control, priorities, and retries",
   "type": "module",
   "main": "./dist/index.cjs",

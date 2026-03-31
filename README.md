@@ -1,9 +1,8 @@
 # @philiprehberger/task-queue
 
-[![CI](https://github.com/philiprehberger/ts-task-queue/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/ts-task-queue/actions/workflows/ci.yml)
+[![CI](https://github.com/philiprehberger/task-queue/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/task-queue/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/@philiprehberger/task-queue.svg)](https://www.npmjs.com/package/@philiprehberger/task-queue)
-[![License](https://img.shields.io/github/license/philiprehberger/ts-task-queue)](LICENSE)
-[![Sponsor](https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ec6cb9)](https://github.com/sponsors/philiprehberger)
+[![Last updated](https://img.shields.io/github/last-commit/philiprehberger/task-queue)](https://github.com/philiprehberger/task-queue/commits/main)
 
 In-process async job queue with concurrency control, priorities, and retries
 
@@ -118,7 +117,6 @@ queue.active();   // currently processing
 queue.pending();  // ready to process (not delayed)
 ```
 
-
 ## API
 
 | Export | Type | Description |
@@ -149,6 +147,24 @@ npm run build
 npm test
 ```
 
+## Support
+
+If you find this project useful:
+
+⭐ [Star the repo](https://github.com/philiprehberger/task-queue)
+
+🐛 [Report issues](https://github.com/philiprehberger/task-queue/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
+
+💡 [Suggest features](https://github.com/philiprehberger/task-queue/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement)
+
+❤️ [Sponsor development](https://github.com/sponsors/philiprehberger)
+
+🌐 [All Open Source Projects](https://philiprehberger.com/open-source-packages)
+
+💻 [GitHub Profile](https://github.com/philiprehberger)
+
+🔗 [LinkedIn Profile](https://www.linkedin.com/in/philiprehberger)
+
 ## License
 
-MIT
+[MIT](LICENSE)
