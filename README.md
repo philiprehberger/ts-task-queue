@@ -1,8 +1,8 @@
 # @philiprehberger/task-queue
 
-[![CI](https://github.com/philiprehberger/task-queue/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/task-queue/actions/workflows/ci.yml)
+[![CI](https://github.com/philiprehberger/ts-task-queue/actions/workflows/ci.yml/badge.svg)](https://github.com/philiprehberger/ts-task-queue/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/@philiprehberger/task-queue.svg)](https://www.npmjs.com/package/@philiprehberger/task-queue)
-[![Last updated](https://img.shields.io/github/last-commit/philiprehberger/task-queue)](https://github.com/philiprehberger/task-queue/commits/main)
+[![Last updated](https://img.shields.io/github/last-commit/philiprehberger/ts-task-queue)](https://github.com/philiprehberger/ts-task-queue/commits/main)
 
 In-process async job queue with concurrency control, priorities, and retries
 
@@ -151,11 +151,11 @@ npm test
 
 If you find this project useful:
 
-⭐ [Star the repo](https://github.com/philiprehberger/task-queue)
+⭐ [Star the repo](https://github.com/philiprehberger/ts-task-queue)
 
-🐛 [Report issues](https://github.com/philiprehberger/task-queue/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
+🐛 [Report issues](https://github.com/philiprehberger/ts-task-queue/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
 
-💡 [Suggest features](https://github.com/philiprehberger/task-queue/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement)
+💡 [Suggest features](https://github.com/philiprehberger/ts-task-queue/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement)
 
 ❤️ [Sponsor development](https://github.com/sponsors/philiprehberger)
 
